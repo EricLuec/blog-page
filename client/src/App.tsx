@@ -1,12 +1,9 @@
-
-import './App.css'
 import './components/Layout.tsx'
 import Layout from "./components/Layout.tsx";
-export const  App = () => {
 
+export const  App = () => {
   return (
-    <Layout />
+        <Layout />
   )
 };
 
-export default App

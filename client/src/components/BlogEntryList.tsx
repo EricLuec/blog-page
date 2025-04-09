@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import {BlogEntry} from "./BlogEntry.tsx";
 import axios from "axios";
-import {BlogEntryInterface} from '../components/BlogEntry.tsx'
+import {BlogEntryInterface} from './BlogEntry.tsx'
+import './css/BlogEntryList.css'
 
 export const BlogEntryList = () => {
     const [blogEntries, setBlogEntries] = useState<BlogEntryInterface[]>([]);
@@ -16,13 +17,16 @@ export const BlogEntryList = () => {
     }, []);
 
     return (
-        <>
-            <h3>To Do:</h3>
-            <div className="todos">
+        <div className="blogEntryListRoot">
+            <div className="filterOptionsWrapper">
+
+                <input type="text" placeholder="search for entry" />
+            </div>
+            <div className="blogEntries">
                 {blogEntries.map((blogEntry) => (
-                    <BlogEntry key={blogEntry.id} name={blogEntry.name} description={blogEntry.description} />
+                    <BlogEntry key={blogEntry.id} name={blogEntry.name} description={blogEntry.description} text={blogEntry.text} />
                 ))}
             </div>
-        </>
+        </div>
     );
 };
