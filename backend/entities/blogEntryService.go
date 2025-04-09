@@ -3,6 +3,8 @@ package services
 import (
 	"context"
 	"encoding/json"
+	"ericluec-blog-page/config"
+	"ericluec-blog-page/services"
 	"go.mongodb.org/mongo-driver/bson"
 	"net/http"
 )
@@ -15,14 +17,14 @@ func CreateBlogEntry(w http.ResponseWriter, r *http.Request) {
 	}
 	defer client.Disconnect(context.Background())
 
-	var room entities.Room
-	if err := json.NewDecoder(r.Body).Decode(&room); err != nil {
+	var blogEntry entities.BlogEntry
+	if err := json.NewDecoder(r.Body).Decode(&blogEntry); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
 	collection := client.Database("bbb-lars").Collection("rooms")
-	result, err := collection.InsertOne(context.Background(), room)
+	result, err := collection.InsertOne(context.Background(), blogEntry)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -47,14 +49,14 @@ func GetAllBlogEntries(w http.ResponseWriter, r *http.Request) {
 	}
 	defer cursor.Close(context.Background())
 
-	var rooms []entities.blogEntry
+	var blogEntries []entities.BlogEntry
 	for cursor.Next(context.Background()) {
-		var blogEntry entities.blogEntry
-		if err := cursor.Decode(&room); err != nil {
+		var blogEntry entities.BlogEntry
+		if err := cursor.Decode(&blogEntry); err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-		rooms = append(blogEntries, blogEntry)
+		blogEntries = append(blogEntries, blogEntry)
 	}
 
 	json.NewEncoder(w).Encode(blogEntries)
