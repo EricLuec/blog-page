@@ -1,30 +1,19 @@
 import { useState } from "react";
-import { useCallback } from "react";
 import { useEffect } from "react";
 import {BlogEntry} from "./BlogEntry.tsx";
+import axios from "axios";
+import {BlogEntryInterface} from '../components/BlogEntry.tsx'
 
 export const BlogEntryList = () => {
-    const [blogEntries, setBlogEntries] = useState([]);
-
-    const fetchBlogEntries = useCallback(async () => {
-        const resp = await fetch("/api/blogEntries");
-        const body = await resp.json();
-        const { fetchedBlogEntries } = body;
-
-        setBlogEntries(fetchedBlogEntries);
-    }, [setBlogEntries]);
-
+    const [blogEntries, setBlogEntries] = useState<BlogEntryInterface[]>([]);
+    console.log("render BlogEntry")
     useEffect(() => {
-        fetchBlogEntries();
-    }, [fetchBlogEntries]);
-
-    function onDeleteSuccess() {
-        fetchBlogEntries();
-    }
-
-    function onCreateSuccess(newBlogEntry) {
-        setBlogEntries([...blogEntries, newBlogEntry]);
-    }
+        console.log("before fetch")
+        axios.get("http://localhost:8080/blogEntries").then(response => {
+            setBlogEntries(response.data);
+            console.log(response.data)
+        })
+    }, []);
 
     return (
         <>

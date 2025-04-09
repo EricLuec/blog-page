@@ -1,12 +1,12 @@
 import '../App.css'
 
-interface BlogEntry {
+export interface BlogEntryInterface {
     id?: number
     name: string
     description: string
 }
 
-export const BlogEntry = ({name, description}: BlogEntry ) => {
+export const BlogEntry = ({name, description}: BlogEntryInterface ) => {
 
     return (
         <div>
