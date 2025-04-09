@@ -1,7 +1,7 @@
 package main
 
 import (
-	services "ericluec-blog-page/entities"
+	"ericluec-blog-page/services"
 	"fmt"
 	"github.com/gorilla/mux"
 	"log"

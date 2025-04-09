@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"ericluec-blog-page/config"
-	"ericluec-blog-page/services"
+	"ericluec-blog-page/entities"
 	"go.mongodb.org/mongo-driver/bson"
 	"net/http"
 )
@@ -23,7 +23,7 @@ func CreateBlogEntry(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	collection := client.Database("bbb-lars").Collection("rooms")
+	collection := client.Database("ericluec-blogPage").Collection("blogEntries")
 	result, err := collection.InsertOne(context.Background(), blogEntry)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
