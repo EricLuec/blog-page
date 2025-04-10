@@ -1,0 +1,19 @@
+.createBlogEntryForm {
+    border: 0.1rem solid black;
+    border-radius: 6%;
+    padding: 5%;
+    margin: 5%;
+}
+.createBlogEntryHeader {
+    margin-left: 25%;
+}
+
+.blogEntryFormLabel {
+    margin-right: 20%;
+    margin-left: 5%;
+    margin-bottom: 10%;
+}
+
+.blogEntryCategorySelector {
+    margin-left: 30%;
+}

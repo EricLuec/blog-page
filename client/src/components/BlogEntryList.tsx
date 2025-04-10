@@ -7,12 +7,10 @@ import './css/BlogEntryList.css'
 
 export const BlogEntryList = () => {
     const [blogEntries, setBlogEntries] = useState<BlogEntryInterface[]>([]);
-    console.log("render BlogEntry")
     useEffect(() => {
-        console.log("before fetch")
         axios.get("http://localhost:8080/blogEntries").then(response => {
             setBlogEntries(response.data);
-            console.log(response.data)
+            // console.log(response.data)
         })
     }, []);
 
