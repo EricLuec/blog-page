@@ -1,9 +1,12 @@
 .blogEntryListRoot {
-    background-color: lightgray;
+    background-color: azure;
     display: flex;
+    flex-direction: column;
+
 }
 .blogEntries {
     display: flex;
+    flex-direction: row;
     width: 100%;
     height: 100%;
 }
@@ -11,4 +14,9 @@
 .filterOptionsWrapper {
     padding-left: 5%;
     padding-top: 5%;
+}
+.searchAndFilterOptions {
+    display: flex;
+
+    background-color: green;
 }
