@@ -1,15 +1,16 @@
 import './css/CreateBlogEntry.css'
+import axios from "axios";
 
 export const CreateBlogEntry = () => {
-    
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const form = e.currentTarget;
         const data = new FormData(form);
 
-        const value = Object.fromEntries(data.entries());
-        console.log({ value });
+        const formValues = Object.fromEntries(data.entries());
+        axios.post('http://localhost:8080/blogEntry', formValues)
     };
 
     return (
