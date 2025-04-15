@@ -19,8 +19,8 @@ export const CreateBlogEntry = () => {
                 Neuen Blog-Eintrag erstellen
             </h3>
             <form className="createBlogEntryForm" onSubmit={handleSubmit}>
-                <label htmlFor="titel" className="blogEntryFormLabel">Titel</label>
-                <input type="text" id="titel" name="titel" placeholder="Titel"/>
+                <label htmlFor="name" className="blogEntryFormLabel">Titel</label>
+                <input type="text" id="name" name="name" placeholder="Titel"/>
                 <br/>
                 <label htmlFor="titel" className="blogEntryFormLabel">Kategorie</label>
                 <br/>

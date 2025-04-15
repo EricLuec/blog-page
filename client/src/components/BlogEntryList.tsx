@@ -10,7 +10,7 @@ export const BlogEntryList = () => {
     useEffect(() => {
         axios.get("http://localhost:8080/blogEntries").then(response => {
             setBlogEntries(response.data);
-            // console.log(response.data)
+            console.log(response.data)
         })
     }, []);
 
@@ -19,10 +19,10 @@ export const BlogEntryList = () => {
             <div className="searchAndFilterOptions">
                 <button className="newEntryButton">Neuen Beitrag erstellen</button>
                 <select name="cars" id="cars">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                    <option value="m">m</option>
+                    <option value="mm">mm</option>
+                    <option value="mmm">mmm</option>
+                    <option value="mmmm">mmmm</option>
                 </select>
             </div>
             <div className="blogEntries">
